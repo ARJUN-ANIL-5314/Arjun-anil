@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Problem-4</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { margin: 5px; padding: 5px; width: 300px; }
+    pre {  padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+
+  <h2>Problem-4: Multiples Counter</h2>
+
+  <label>Enter numbers (comma separated):</label><br>
+      <input id="numbers" type="text" placeholder="e.g. 1,2,8,9,12,46,76,82,15,20,30">
+  <br><br>
+     <button onclick="countMultiples()">Count Multiples</button>
+
+  <h3>Result:</h3>
+  <pre id="result">—</pre>
+
+  <script>
+    function countMultiples() {
+      const input = document.getElementById('numbers').value;
+      if (!input) {
+        document.getElementById('result').innerText = "Please enter some numbers!";
+        return;
+      }
+
+      const arr = input.split(",").map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+
+      const output = {};
+      for (let i = 1; i <= 9; i++) {
+        output[i] = arr.filter(num => num % i === 0).length;
+      }
+
+      document.getElementById('result').innerText = JSON.stringify(output, null, 2);
+    }
+  </script>
+</body>
+</html>
